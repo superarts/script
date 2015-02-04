@@ -161,13 +161,16 @@ function array_parse($array, $path, $map)
 
 function test()
 {
-	$filename = 'tmp/test.html';
+	/*
+	$filename = 'post.html';
 	$doc = file_to_doc($filename);
 	echo "----\n";
 	//print_r(doc_to_array($doc));
 	$array = doc_to_array($doc);
 	print_array($array, 'root');
+	 */
 
+	/*
 	echo "----\n";
 	$path = "root-html-1-body-div-0-div-0-section-1-ul-0-li";
 	//$path = "root-html-1-body-div-0-div-0-section-1-ul-0-li-29-div-0-div-0";
@@ -184,14 +187,40 @@ function test()
 	//echo array_get_path($item, $map['url']);
 	$items = array_parse_map($item, $map);
 	print_r($items);
-
-	/*
-	echo "---- integrated test\n";
-	$filename = 'tmp/test.html';
-	$doc = file_to_doc($filename);
-	$array = doc_to_array($doc);
-	print_r(array_parse($array, $path, $map));
 	 */
+
+	echo "---- integrated test\n";
+	$map = array();
+	$map['title'] = '-div-0-div-0-a-_value';
+	$map['url'] = '-div-0-div-0-a-@attributes-href';
+	$map['author'] = '-div-1-div-0-div-a-_value';
+	$map['reply'] = '-div-0-div-1-_value';
+	$map['date'] = '-div-1-div-1-_value';
+	$path = "root-html-1-body-div-0-div-0-section-1-ul-0-li";
+	for ($i = 1; $i <= 555; $i++)
+	{
+		$fp = fopen('output.txt', 'a');
+		$filename = "/Users/leo/prj/android/script/output/goukrsex/index.html?page=$i";
+		$doc = file_to_doc($filename);
+		$array = doc_to_array($doc);
+		$array = array_parse($array, $path, $map);
+		//print_r(array_parse($array, $path, $map));
+		//print_r($array);
+		foreach ($array as $post)
+		{
+			echo $post['title']."\n";
+			fwrite($fp, $post['title']."\n");
+			fwrite($fp, $post['url']."\n");
+			fwrite($fp, $post['author']."\n");
+			fwrite($fp, $post['reply']."\n");
+			fwrite($fp, $post['date']."\n");
+		}
+		fclose($fp);
+	}
+
+	//$contents = $doc->getElementById('articleContent');
+	//$contents = $doc->getElementById('cmtContent');
+	//print_r($contents);
 
 	//print_array($array['html'][1]['body']['div'][0]['div'][0]['section']['1']['ul'][0]['li'][29]);
 }
