@@ -5,3 +5,7 @@ This is my script collection. I've been using a file located at ~/Dropbox/etc to
 ## android-manifest.php
 
 Change package name, add permission, launch the app on device, etc.
+
+## html-parser
+
+Parse HTML contents into PHP array
