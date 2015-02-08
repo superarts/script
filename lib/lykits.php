@@ -1,6 +1,6 @@
 <?php
 
-require('/usr/local/lib/liblykits.php');
+require('/Users/leo/Dropbox/etc/liblykits.php');
 date_default_timezone_set('Australia/Perth');
 
 function cmd_input($prompt = 'Value')
