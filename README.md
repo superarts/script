@@ -6,6 +6,10 @@ This is my script collection. I've been using a file located at ~/Dropbox/etc to
 
 Change package name, add permission, launch the app on device, etc.
 
-## html-parser
+## html-parser.php
 
 Parse HTML contents into PHP array
+
+## source-split.php
+
+Split source files into classes. Still under development.
